@@ -5,8 +5,11 @@ use SNMP::Extension::PassPersist;
 
 my $base = ".1.3.6.1.4.1.39178.100.1.1.1.2.33";
 
+
+# Update every 5 min
 my $extsnmp = SNMP::Extension::PassPersist->new(
-	backend_collect => \&update_tree
+	backend_collect => \&update_tree,
+	refresh         => 300
 	);
 $extsnmp->run;
 
